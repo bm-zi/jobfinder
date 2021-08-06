@@ -35,11 +35,11 @@ Ubuntu 20.04.2 LTS (Focal Fossa)
 
 <h2>Notes before installation</h2>
 <pre>
-1)
-Before all, you have to have Python3 and virtualenv module installed 
-on your system.
+1-
+Before everything, you have to have Python3 and virtualenv module 
+installed on your system.
 
-2)
+2-
 If you donot have postgres database installed, you can replace 
 database parameter in settings.py as following:
 
