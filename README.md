@@ -15,12 +15,12 @@ interface.
 
 </p>
 
-<h2>Help<h2>
+<h2>Help</h2>
 Help on using this app is included inside of application. <br>
 After having application installed access to help menu is provided.
 
 
-<h2>Programming Languages and Database<h2>
+<h2>Programming Languages and Database</h2>
 <pre>
 Django 3.2.5
 Python 3.8.10
@@ -29,11 +29,11 @@ jQuery v3.5.1
 Bootstrap v4.5.2
 </pre>
 
-<h2>Tested Environment<h2>
+<h2>Tested Environment</h2>
 Ubuntu 20.04.2 LTS (Focal Fossa)
 
 
-<h2>Notes before installation<h2>
+<h2>Notes before installation</h2>
 <pre>
 1)
 Before all, you have to have Python3 and virtualenv module installed 
@@ -51,7 +51,7 @@ DATABASES = {
 }
 </pre>
 
-<h2>Installation and launching program<h2>
+<h2>Installation and launching program</h2>
 <pre>
 In terminal run following commands:
 
