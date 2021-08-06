@@ -1,9 +1,28 @@
 <pre>
-A simple pythonic way of job searching through indeed advance search, on Django framework.
-Help on using this app is included inside of application.
 
-Programming languages and tools
-...............................
+About jobfinder
+...............
+This app is a nify and simple web-based tool to customize the job 
+searching, built on Django framework and uses the indeed advanced job 
+search engine.
+
+No API programming or Django REST framework used in this application. 
+This application uses Python mechanize module to automate submitting 
+forms for advance search on indeed website and then the web scraping
+Python modules help to process response pages and get a reusable text 
+format from job search ressults. 
+The job search information are stored in the database and then Django 
+server provides a CRUD web-based application with a user-friendly 
+interface.
+
+
+Help
+....
+Help on using this app is included inside of application. 
+After having application installed access to help menu is provided.
+
+Programming Languages and Database
+..................................
 Django 3.2.5
 Python 3.8.10
 PostgreSQL 12.7
@@ -11,7 +30,7 @@ jQuery v3.5.1
 Bootstrap v4.5.2
 
 
-Tested environment
+Tested Environment
 ...................
 Ubuntu 20.04.2 LTS (Focal Fossa)
 
