@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head_title %}About Jobfinder{% endblock head_title %}
+{% block PageTitle %}- About{% endblock PageTitle %}
+
+{% block AboutJobfinder %}
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#link-4').addClass('text-info');
+    });
+</script>
+
+<div class="p-5">
+    <div class="m-3">
+        <h3 class="text-info">Quick help on using this app</h3>
+            
+            <ul>
+                <li>
+                    Create search filters from "Filtering Jobs" tab.
+                </li>
+                
+                <li>Choose a filter appeared in the list below, 
+                    and then click on search.
+                </li>
+                
+                <li>Jobs found within history can be saved and then 
+                    be viewed from "Save Jobs" tab.
+                </li>
+            </ul>
+        <br><br>
+
+        <h3 class="text-info">Application Source</h3>
+        
+        <p>
+            The source for this application is available 
+            on <a href="">github</a> and free for personal use.
+        </p>
+        <br><br>
+
+        <h3 class="text-info">More detail about this app</h3>
+        <p>
+            Jobfinder is a simple django application that exploites 
+            indeed search engine. 
+            The goal is to customize our job seaching by creating 
+            filters and use these filters from anywhere to get a 
+            better and faster job search result.<br><br>
+            
+            Jobfinder do not need any authentication and login check. 
+            Jobfinder was created with the prespective to be API 
+            independent and simple enough for personal job search 
+            only.<br><br>
+
+            It mechanizes the advance search interface from indeed 
+            website. The search result will be fetched and stored in 
+            a history list. From history list the jobs can be 
+            filtered and saved or deleted.
+            <br><br>
+
+            Each job in search result contains all the information 
+            from job posted website in simple text format.<br><br>
+
+            It is also possible to add manually the information about 
+            any job found on the web to the databse. This can be done 
+            from "Save Jobs" tab, and from there you review all the 
+            saved jobs.
+            <br><br>
+
+            The "Filter Jobs" tab is where you can create job search 
+            filters. These filters will appear in "Job Search" tab 
+            and from there we run the seach for a selected filter 
+            from the list.
+        </p><br><br>
+
+    </div>
+
+
+    <div>
+        <h3 class="text-info">Snapshots</h3>
+        <p> 
+            Even though the user interface is selef-explanetory, here 
+            in following some snapshots have been added:
+        </p>
+        
+        <h4 class="text-info text-center mt-5">
+            Jobfinder home page view
+        </h4>
+
+        <img class="rounded float-left mb-5"
+            src="{% static 'images/home-page.png' %}">
+
+    </div>
+
+    <div>
+        <h4 class="text-info text-center">
+            Jobfinder "Save Jobs" view
+        </h4>
+        <img src="{% static 'images/save-jobs.png' %}" 
+                class="rounded float-left mb-5">
+    </div>
+
+    <div>
+        <h4 class="text-info text-center">
+            Jobfinder "Filter Jobs" view
+        </h4>
+        <img src="{% static 'images/filter-jobs.png' %}" 
+            class="rounded float-left max-width: 50% max-height: 50%">
+    </div>
+
+</div>
+{% endblock AboutJobfinder %}

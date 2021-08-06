@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    {% load static %}
+    <title>Job Finder - {% block head_title %} {% endblock head_title %}</title>
+    <link rel="shortcut icon" type="image/png" 
+            href="{% static 'favicon.ico' %}" />
+
+
+    <!-- BOOTSTAP -->
+    <link rel="stylesheet" type="text/css" 
+            href="{% static 'bootstrap.min.css' %}">
+    
+    <script type="text/javascript" 
+            src="{% static 'jquery.min.js' %}"></script>
+
+    <script src="{% static 'popper.min.js' %}"></script>
+    <script src="{% static 'bootstrap.min.js' %}"></script>
+    
+     
+     
+    <script type="text/javascript" 
+            src="{% static 'his_btn.js' %}">
+    </script>
+    
+    <script type="text/javascript" 
+            src="{% static 'job_btn.js' %}">
+    </script>
+    <script type="text/javascript" 
+            src="{% static 'fil_btn.js' %}">
+    </script>
+    
+    <style>
+        
+        html {
+            font-size: 12px;
+        }
+
+        body {
+         font-family: Monospace;
+         font-weight: bold;
+         background-color:powderblue;
+        }
+
+        table, th, td, tr{
+            padding: 1px;
+            margin: 1px;
+            border-spacing:1px;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>
+            <a class="text-info font-weight-bold" style="text-decoration: none;" 
+                href="/">Job Finder
+                {% block PageTitle %}{% endblock PageTitle %}
+            </a>
+        </h1>
+
+        <div class="card">
+            <div class="navbar navbar-light bg-light">
+                <div class="container">
+                    
+                    <a id="link-1" class="navbar-brand text-center" 
+                        href="{% url 'jobfinder:home_view' %}">
+                        Job Searching<br>Home
+                    </a>
+
+                    <a id="link-2" class="navbar-brand text-center" 
+                        href="{% url 'jobfinder:job_save_view' %}">
+                        Saving<br>Jobs
+                    </a>
+
+                    <a id="link-3" class="navbar-brand text-center" 
+                        href="{% url 'jobfinder:filter_jobs_view' %}">
+                        Filtering<br>Jobs
+                    </a>
+                    
+                    <a id="link-4" class="navbar-brand text-center" 
+                        href="{% url 'jobfinder:about_view' %}">
+                        About<br>Job Finder
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            {% block BrowseNewJobs %}{% endblock BrowseNewJobs %}
+            {% block SavedJobs %}{% endblock SavedJobs %}
+            {% block FilterJobs %}{% endblock FilterJobs %}
+            {% block AboutJobfinder %}{% endblock AboutJobfinder %}
+        </div>
+    </div>
+
+
+    <script type="text/javascript" 
+            src="{% static 'deleteJobsBtn.js' %}">
+    </script>
+
+    <script type="text/javascript" 
+            src="{% static 'deleteHistoryBtn.js' %}">
+    </script>
+
+    <script type="text/javascript" 
+            src="{% static 'deleteFiltersBtn.js' %}">
+    </script>
+
+    <script type="text/javascript">
+        if(document.getElementById("jobs_history").innerHTML.trim() === ""){
+            document.getElementById("delete-history-btn").style.visibility = "hidden";
+            document.getElementById("Job-Search-History-label").style.visibility = "hidden";
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+
+
+{% block head_title %}Home Page{% endblock head_title %}
+{% block PageTitle %}- Home{% endblock PageTitle %}
+
+{% block BrowseNewJobs %}
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#link-1').addClass('text-info');
+    });
+</script>
+
+<div class="p-5">
+    <div class="card border-0">
+        <button type="button" class="btn btn-info" 
+            data-toggle="collapse" data-target="#start-help">
+            Click on this bar to view the steps of using this app
+        </button>
+
+        <div id="start-help" class="collapse">
+            <p class="pl-4">
+                1. Create search filters from "Filtering Jobs" menu.<br> 
+                2. Select the created filter as it appears in the below
+                list and then click on search button.<br>
+                3. Jobs found within history can be saved and then be 
+                viewed from "Saving Jobs" menu.
+            </p>
+        </div>
+
+        <div class="card-body bg-secondary p-5">
+            <form action="/indeed-search" method="POST">{% csrf_token %}
+
+                <select name="filter_choice" 
+                        class="form-select w-50" size="5">
+                    {% for fn in filters_name %}
+                        <option> {{fn}} </option>
+                    {% endfor %}
+                </select><br>
+
+                <button type="submit" value="select"
+                    class='btn btn-light mt-2 pl-3'>
+                    search
+                </button>
+
+            </form>
+            <p>{{ msg }}</p>
+        </div>
+        
+        <div class="text-danger">
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li {% if message.tags %} 
+                    class="{{ message.tags }}"
+                    {% endif %}>
+                    {{ message }}
+                </li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+
+        <p><br></p>
+        <div class="card mt-5">
+            <div class="d-inline p-2 bg-info">
+                <h4 id="Job-Search-History-label" class="d-inline">Job Search History</h4>
+                
+                <button type="button" id="delete-history-btn" 
+                    class="lead btn-warning float-right lead w-20">
+                    Delete History
+                </button>
+
+            </div>
+        </div>
+
+    </div>
+
+    
+
+
+    <div id="loading" class="d-none">
+        <p><i><b><span>
+            Loading jobs will take a few minutes ...
+        </span></b></i></p>
+    </div>
+
+    <div id="jobs_history" class="card p-5 border-info">
+        {% for job in history_list %}
+        
+        <button class="dropdown text-left p-1" 
+            data-toggle="collapse" data-target="#demo{{job.id}}">
+            
+            <a href={{job.lnk}}>{{job.ttl}}</a>
+        </button>
+        
+        <div id="demo{{job.id}}" class="collapse">
+            
+            <div class="card p-2">
+                <h4>Job Description</h4>
+                <div>{{ job.desc |safe }}</div>
+            </div>
+                       
+        </div>
+        <div>
+            <button id="{{job.id}}" class="btn btn-warning mt-1 mb-5" 
+                onclick="del_his_btn(this.id)">
+                delete
+            </button>
+
+            <button id="sav_{{job.id}}" 
+                onclick="sav_his_btn(this.id)"
+                class="btn btn-primary mt-1 mb-5">
+                save
+            </button>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock BrowseNewJobs %}

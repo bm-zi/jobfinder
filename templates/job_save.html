@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+
+{% block head_title %}Save Jobs{% endblock head_title %}
+{% block PageTitle %}- Saving Jobs{% endblock PageTitle %}
+
+{% block SavedJobs %}
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#link-2').addClass('text-info');
+    });
+</script>
+<div class="p-5">
+    <div class="card p-5 bg-secondary">
+        <form class="form overflow-auto" id="job-create-form" 
+                method="POST" action="/job-save"> {% csrf_token %}
+            <h4>Save a new job</h4>
+            <input type="hidden" value="/job-save" name="next" />
+            <table>{{ saveJobForm.media }}{{ saveJobForm.as_p }}</table>
+            
+            <button class='btn btn-light ml-2 mt-2 pl-3'
+                    type="submit">
+                save
+            </button><br>
+        </form>
+
+    </div>
+    <div class="card p-2 mt-5 bg-info">
+        <div class="d-inline">
+
+            <h4 class="d-inline">Saved Jobs</h4>
+            
+            <button type="button" 
+                    class="btn-warning float-right lead w-20" 
+                    id="delete-saved-jobs-btn">
+                Delete Saved Jobs
+            </button>
+
+        </div>
+    </div>
+
+
+    <div class="card p-5 border-info">
+        {% for job in jobs_list %}
+        
+            <button class="dropdown text-left p-1 m-1" 
+                    data-toggle="collapse" 
+                    data-target="#demo{{job.id}}">
+                <a href={{job.link}}>{{job.title}}</a>
+                {% if job.is_applied %}
+                    <span style="color: red;">
+                        -  Applied
+                    </span>
+                {% endif %}
+            </button>
+            
+            <div id="demo{{job.id}}" class="collapse">
+                
+                <h4>Job Description</h4>
+                {{ job.description|safe }} <br><br>
+         
+            </div>
+            <div>
+                <button id="{{job.id}}"
+                    class="btn btn-warning ml-1 mt-1 mb-5" 
+                    onclick="del_job_btn(this.id)">
+                    delete
+                </button>
+                
+                <button id="{{job.id}}"
+                        class="btn btn-primary mt-1 mb-5"
+                        onclick="edit_job_btn(this.id)">
+                    edit
+                </button>
+            </div>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+{% endblock SavedJobs %}
